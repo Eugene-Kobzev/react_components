@@ -1,8 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { Link as RouteLink } from 'react-router-dom';
-import { Link as MuiLink } from '@mui/material';
-import StoreIcon from '@mui/icons-material/Store';
-import InputIcon from '@mui/icons-material/Input';
+import SidebarContent from './Parts/SidebarContent/SidebarContent'
 import './style.scss'
 
 interface ILayout {
@@ -18,30 +15,7 @@ export default function ({ children }: ILayout) {
 
       </div>
       <div className={`${blockClassName}__page-wrapper`}>
-        <div className={`${blockClassName}__sidebar`}>
-          <MuiLink
-            component={RouteLink}
-            to='/'
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5em'
-            }}
-          >
-            <StoreIcon /> Fake Store
-          </MuiLink>
-          <MuiLink
-            component={RouteLink}
-            to='/dndinput'
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5em'
-            }}
-          >
-            <InputIcon /> Drag and drop
-          </MuiLink>
-        </div>
+        <SidebarContent className={`${blockClassName}__sidebar`} />
         <div className={`${blockClassName}__main`}>
           <Outlet />
           {children}
