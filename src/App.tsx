@@ -13,8 +13,6 @@ function App() {
         <Route path="/dndinput" element={<DnDInput />} />
       </Routes>
     </Layout>
-
-
   );
 }
 

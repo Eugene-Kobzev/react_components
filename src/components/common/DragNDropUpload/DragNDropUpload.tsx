@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@mui/material';
 import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
+import { useTheme } from '@mui/material/styles'
 import './style.scss'
 
 const getFileNameFromPath = (str: string): string | null => {
@@ -31,6 +32,9 @@ interface IDnDProps {
  */
 export default function ({ onFileChange, areaClassName, btnclassName, btnText, icon, title, description }: IDnDProps) {
   const [drag, setDrag] = useState(false)
+  const theme = useTheme()
+
+  const primaryMainClr = theme.palette.primary.main
 
   const areaClass = `upload-area ${areaClassName ? areaClassName : ''}`
   const buttonClass = `upload-area__btn ${btnclassName ? btnclassName : ''}`
@@ -72,7 +76,7 @@ export default function ({ onFileChange, areaClassName, btnclassName, btnText, i
     >
       <div className='upload-area__icon-area'>
         {
-          icon ? icon : <CloudUploadOutlinedIcon sx={{ fontSize: '4em', color: '#3f50b5' }} />
+          icon ? icon : <CloudUploadOutlinedIcon sx={{ fontSize: '4em', color: primaryMainClr }} />
         }
       </div>
       <h4 className='upload-area__title'>
@@ -89,7 +93,7 @@ export default function ({ onFileChange, areaClassName, btnclassName, btnText, i
         <Button variant="contained"
           component="label"
           sx={{
-            cursor: 'pointer'
+            cursor: 'pointer',
           }}
           className={buttonClass}
         >
@@ -103,5 +107,3 @@ export default function ({ onFileChange, areaClassName, btnclassName, btnText, i
 
   )
 }
-
-// export { }
