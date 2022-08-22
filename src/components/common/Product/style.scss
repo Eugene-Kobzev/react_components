@@ -1,0 +1,29 @@
+.product{
+  width: 20em;
+  border: 2px solid #cccccc;
+  border-radius: 1em;
+  padding: 0.5em;
+
+  &__header{
+    display: flex;
+    gap: 1em;
+    justify-content: space-between;
+  }
+
+  &__price{
+    font-weight: 700;
+    font-size: 2em;
+    color: #999;
+  }
+
+  &__image{
+    width: 45%;
+  }
+
+  &__rating{
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+    margin-top: 1em;
+  }
+}

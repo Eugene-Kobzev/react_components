@@ -1,0 +1,29 @@
+.page{
+  overflow-x: hidden;
+
+  &__header{
+    width: 100vw;
+    min-height: 4em;
+    position: relative;
+    z-index: 5;
+    border-bottom: 1px solid #000;
+  }
+
+  &__page-wrapper{
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  &__sidebar{
+    min-width: 15em;
+    padding: 1em 0.5em;
+    border-right: 1px solid #000;
+    min-height: 100vh;
+    position: relative;
+    z-index: 10;
+  }
+
+  &__main{
+    padding: 1em;
+  }
+}
