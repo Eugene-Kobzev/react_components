@@ -1,98 +1,107 @@
-// import React, { useState } from 'react';
-// import { Box, Button } from '@mui/material';
-// import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-// import './style.scss'
+import React, { useState } from 'react';
+import { Box, Button } from '@mui/material';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import './style.scss'
 
-// interface callBack {
-//   fn: ([key: string]: string): void
-// }
+const getFileNameFromPath = (str: string): string | null => {
+  const strMatches = str.match(/\\[^\\]+$/)
+  return strMatches![0].replace('\\', '') ?? null
+}
 
-// /**
-//  *
-//  * @param onFileChange - func that returns (event, arr (files) )
-//  * @param areaClassName
-//  * @param btnclassName
-//  * @param btnText
-//  * @param icon
-//  * @param title
-//  * @param description
-//  * @returns
-//  */
-// export default function ({ onFileChange, areaClassName, btnclassName, btnText, icon, title, description }) {
-//   const [drag, setDrag] = useState(false)
+interface IDnDProps {
+  title?: string,
+  areaClassName?: string,
+  btnclassName?: string,
+  btnText?: string,
+  icon?: JSX.Element,
+  description?: string,
+  onFileChange?: any,
+}
 
-//   let areaClass = `upload-area ${areaClassName ? areaClassName : ''}`
-//   let buttonClass = `upload-area__btn ${btnclassName ? btnclassName : ''}`
+/**
+ *
+ * @param onFileChange - func that returns (event, arr (files) )
+ * @param areaClassName
+ * @param btnclassName
+ * @param btnText
+ * @param icon
+ * @param title
+ * @param description
+ * @returns
+ */
+export default function ({ onFileChange, areaClassName, btnclassName, btnText, icon, title, description }: IDnDProps) {
+  const [drag, setDrag] = useState(false)
 
-//   const handleDragOver = event => {
-//     event.stopPropagation();
-//     event.preventDefault();
-//     setDrag(true)
-//   }
-//   const handleDragLeave = () => {
-//     console.log('Leave')
-//     setDrag(false)
-//   }
+  const areaClass = `upload-area ${areaClassName ? areaClassName : ''}`
+  const buttonClass = `upload-area__btn ${btnclassName ? btnclassName : ''}`
 
-//   const handleDrop = event => {
-//     event.preventDefault();
-//     let files = [...event.dataTransfer.files]
-//     setDrag(false)
+  const handleDragOver = event => {
+    event.stopPropagation();
+    event.preventDefault();
+    setDrag(true)
+  }
+  const handleDragLeave = () => {
+    setDrag(false)
+  }
 
-//     onFileChange(event, files)
-//   }
+  const handleDrop = event => {
+    event.preventDefault();
+    const files = [...event.dataTransfer.files]
+    setDrag(false)
 
-//   const handleFileChange = event => {
-//     let file = event.target.value
-//     let files = [{
-//       name: getFileNameFromPath(file),
-//       path: file,
-//     }]
+    onFileChange && onFileChange(event, files)
+  }
 
+  const handleFileChange = (event): void => {
+    const filePath = event!.target!.value
+    const files = [{
+      name: getFileNameFromPath(filePath),
+      path: filePath
+    }]
 
-//     onFileChange(event, files)
-//   }
-
-
-//   return (
-//     <div className={`${areaClass} ${drag ? 'upload-area--drag-over' : ''}`}
-//       onDragStart={handleDragOver}
-//       onDragLeave={handleDragLeave}
-//       onDragOver={handleDragOver}
-//       onDrop={() => handleDrop(event)}
-//     >
-//       <div className='upload-area__icon-area'>
-//         {
-//           icon ? icon : <CloudUploadIcon sx={{ fontSize: '4em', color: '#7e7e7e' }} />
-//         }
-//       </div>
-//       <h4 className='upload-area__title'>
-//         {
-//           title ? title : 'Перетащите файл для загрузки '
-//         }
-//       </h4>
-//       {description
-//         ? <div className='upload-area__description'> {description} </div>
-//         : null
-//       }
-
-//       <div>
-//         <Button variant="contained"
-//           component="label"
-//           sx={{
-//             cursor: 'pointer'
-//           }}
-//           className={buttonClass}
-//         >
-//           {btnText ? btnText : 'Загрузить'}
-//           <input type="file" hidden onChange={handleFileChange} />
-//         </Button>
-//       </div>
+    onFileChange && onFileChange(event, files)
+  }
 
 
-//     </div>
+  return (
+    <div className={`${areaClass} ${drag ? 'upload-area--drag-over' : ''}`}
+      onDragStart={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDragOver={handleDragOver}
+      onDrop={() => handleDrop(event)}
+    >
+      <div className='upload-area__icon-area'>
+        {
+          icon ? icon : <CloudUploadIcon sx={{ fontSize: '4em', color: '#3f50b5' }} />
+        }
+      </div>
+      <h4 className='upload-area__title'>
+        {
+          title ? title : 'Перетащите файл для загрузки '
+        }
+      </h4>
+      {description
+        ? <div className='upload-area__description'> {description} </div>
+        : null
+      }
 
-//   )
-// }
+      <div>
+        <Button variant="contained"
+          component="label"
+          sx={{
+            cursor: 'pointer'
+          }}
+          className={buttonClass}
+        >
+          {btnText ? btnText : 'Загрузить'}
+          <input type="file" hidden onChange={handleFileChange} />
+        </Button>
+      </div>
 
-export { }
+
+    </div>
+
+  )
+}
+
+// export { }

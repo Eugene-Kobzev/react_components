@@ -1,10 +1,10 @@
-$bg_color: #F6F6F6;
+$bg_color: #b3e5fc;
 
 .upload-area{
     min-width: 15em;
     min-height: 12em;
     background-color: $bg_color;
-    border: 2px dashed #000;
+    border: 2px dashed #0277bd;
     border-radius: 8px;
     padding: 2em;
     display: flex;
@@ -15,7 +15,8 @@ $bg_color: #F6F6F6;
     margin-bottom: 1em;
 
     &--drag-over{
-        background-color: lighten($bg_color, 5%);
+        background-color: #e1f5fe;
+        border-color: #01579b;
     }
 
     &>div, &>h4{
@@ -26,20 +27,21 @@ $bg_color: #F6F6F6;
 
     &__title{
         font-size: 1.2em;
+        color: #263238;
         margin: 0;
     }
 
     &__description{
         font-size: 1em;
-        color: #8C8C8C;
+        color: #263238;
         padding: 0 10em;
     }
 
     .upload-area__btn{
-        background-color: #000;
+        background-color: #3f50b5;
 
         &:hover, &:focus{
-            background-color: lighten(#000, 30%);
+            background-color: #757ce8;
         }
     }
 }
