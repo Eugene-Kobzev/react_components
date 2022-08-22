@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Box, Button } from '@mui/material';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { useState } from 'react';
+import { Button } from '@mui/material';
+import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
 import './style.scss'
 
 const getFileNameFromPath = (str: string): string | null => {
@@ -72,7 +72,7 @@ export default function ({ onFileChange, areaClassName, btnclassName, btnText, i
     >
       <div className='upload-area__icon-area'>
         {
-          icon ? icon : <CloudUploadIcon sx={{ fontSize: '4em', color: '#3f50b5' }} />
+          icon ? icon : <CloudUploadOutlinedIcon sx={{ fontSize: '4em', color: '#3f50b5' }} />
         }
       </div>
       <h4 className='upload-area__title'>
