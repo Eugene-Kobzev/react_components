@@ -1,5 +1,6 @@
 .page{
   overflow-x: hidden;
+  min-height: 100vh;
 
   &__header{
     width: 100vw;
@@ -12,13 +13,14 @@
   &__page-wrapper{
     display: flex;
     flex-wrap: nowrap;
+    min-height: calc(100vh - 4.1em);
   }
 
   &__sidebar{
     min-width: 15em;
     padding: 1em 0.5em;
     border-right: 1px solid #000;
-    min-height: 100vh;
+    // height: 100%;
     position: relative;
     z-index: 10;
   }
