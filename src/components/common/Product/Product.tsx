@@ -1,4 +1,5 @@
 import { IProduct } from "models"
+import { Card, CardHeader, CardMedia, CardContent, CardActions } from '@mui/material'
 import './style.scss'
 
 interface IProductProps {
@@ -9,7 +10,7 @@ export default function ({ product }: IProductProps) {
   const blockClassName = 'product'
 
   return (
-    <div
+    <Card
       className={`${blockClassName}`}
     >
       <div
@@ -23,24 +24,31 @@ export default function ({ product }: IProductProps) {
             {product.price} $
           </div>
         </div>
-        <img
-          src={product.image}
-          alt=""
-          className={`${blockClassName}__image`}
+        <CardMedia
+          component="img"
+          height="194"
+          image={product.image}
+          alt={product.title}
+        // className={`${blockClassName}__image`}
         />
       </div>
       <hr />
-      {product.description}
-      <div
-        className={`${blockClassName}__rating`}
-      >
-        <div>
-          {product.rating?.rate}
+      <CardContent>
+        {product.description}
+      </CardContent>
+      <CardActions>
+        <div
+          className={`${blockClassName}__rating`}
+        >
+          <div>
+            {product.rating?.rate}
+          </div>
+          <div>
+            {product.rating?.count}
+          </div>
         </div>
-        <div>
-          {product.rating?.count}
-        </div>
-      </div>
-    </div>
+      </CardActions>
+
+    </Card>
   )
 }  

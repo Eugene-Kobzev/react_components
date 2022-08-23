@@ -8,7 +8,7 @@ export default function () {
 
   return (
     <div >
-      <h1>Init</h1>
+      <h1>Store</h1>
       <div
         style={{
           display: 'flex',
