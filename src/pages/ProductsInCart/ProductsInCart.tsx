@@ -61,7 +61,7 @@ export default () => {
         }
       }
     })
-  }, [loading])
+  }, [loading, productsList])
 
   return (
     <div >

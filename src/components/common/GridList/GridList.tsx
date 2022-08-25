@@ -74,9 +74,9 @@ const createGridRow = ({ cols, cells, options, className }: IGridRow): JSX.Eleme
   const rowCells = cols.map((col, i) => {
     const className = `${blockClassname}__cell col-${i + 1}`
     const options = col.options || { xs: true }
-    if (cells![col.label] === undefined) { return createGridEl({ children: '', className: className, options: options }) }
+    if (cells?.[col.label] === undefined) { return createGridEl({ children: '', className: className, options: options }) }
 
-    return createGridEl({ children: cells![col.label].content, className: className, options: options })
+    return createGridEl({ children: cells?.[col.label].content, className: className, options: options })
   })
 
   const key = `row_${Math.random()}`
