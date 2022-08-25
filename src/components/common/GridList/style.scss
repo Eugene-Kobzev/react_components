@@ -1,0 +1,17 @@
+.grid-list{
+
+  &__wrapper{
+    border-radius: 1em;
+    padding: 1em;
+    margin-top: 1em;
+  }
+
+  &__heading{
+    font-weight: 700;
+    padding-bottom: 1em;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #d9d9d9;
+  }
+}
+
