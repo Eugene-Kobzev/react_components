@@ -30,7 +30,7 @@ interface IDnDProps {
  * @param description
  * @returns
  */
-export default function ({ onFileChange, areaClassName, btnclassName, btnText, icon, title, description }: IDnDProps) {
+export default ({ onFileChange, areaClassName, btnclassName, btnText, icon, title, description }: IDnDProps): JSX.Element => {
   const [drag, setDrag] = useState(false)
   const theme = useTheme()
 
