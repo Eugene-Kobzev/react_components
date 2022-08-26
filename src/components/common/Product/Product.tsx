@@ -1,5 +1,5 @@
 import { IProduct } from "models"
-import { Card, CardHeader, CardMedia, CardContent, CardActions } from '@mui/material'
+import { Card, CardContent, CardActions } from '@mui/material'
 import './style.scss'
 
 interface IProductProps {
@@ -16,7 +16,12 @@ export default function ({ product }: IProductProps) {
       <div
         className={`${blockClassName}__header`}
       >
-        <div>
+        <div
+          style={{
+            width: '48%',
+          }}
+
+        >
           <h3>{product.title}</h3>
           <div
             className={`${blockClassName}__price`}
@@ -24,12 +29,16 @@ export default function ({ product }: IProductProps) {
             {product.price} $
           </div>
         </div>
-        <CardMedia
-          component="img"
-          height="194"
-          image={product.image}
-          alt={product.title}
-        // className={`${blockClassName}__image`}
+        <div
+          style={{
+            height: '194px',
+            width: '50%',
+            backgroundImage: `url(${product.image})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: '0% 0%',
+          }}
+          className={`${blockClassName}__image`}
         />
       </div>
       <hr />
