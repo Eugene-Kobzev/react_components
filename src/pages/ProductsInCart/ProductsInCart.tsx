@@ -3,9 +3,18 @@ import { CircularProgress, Link } from '@mui/material';
 import useProducts from 'hooks/useProducts';
 import GridList from 'components/common/GridList/GridList';
 import { IProduct } from 'models'
+import './style.scss'
+
+interface IButtonArea {
+  image?: string
+}
+
+const ButtonsArea = ({ image }: IButtonArea) => (
+  <Link href={image} target="_blank" rel="noreferrer">Show</Link>
+)
 
 export default () => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
+
   const { productsList, loading } = useProducts()
 
   const cols = [
@@ -48,7 +57,6 @@ export default () => {
   }
 
   const rows = useMemo(() => {
-    console.log({ productsList })
     if (loading) return undefined
     return productsList.map((item: IProduct) => {
       return {
@@ -57,7 +65,7 @@ export default () => {
           'price': { content: `${item.price}$`, },
           'category': { content: item.category, },
           'rating': { content: item.rating?.rate, },
-          'buttons': { content: <Link href={item.image} target="_blank" rel="noreferrer">Show</Link>, },
+          'buttons': { content: <ButtonsArea image={item.image} />, },
         }
       }
     })
@@ -80,6 +88,7 @@ export default () => {
               cols={cols}
               rows={rows}
               options={options}
+              className="products-list"
             />
         }
       </div>

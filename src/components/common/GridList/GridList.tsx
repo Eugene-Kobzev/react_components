@@ -86,6 +86,7 @@ const createGridRow = ({ cols, cells, options, className }: IGridRow): JSX.Eleme
       sx={{
         display: options?.hide ? 'none' : 'block',
       }}
+      className={className}
     >
       <Grid
         container
@@ -93,7 +94,6 @@ const createGridRow = ({ cols, cells, options, className }: IGridRow): JSX.Eleme
         columnSpacing={options?.columnSpacing || 1}
         rowSpacing={options?.rowSpacing || 1}
         alignItems="center"
-        className={className}
       >
         {rowCells}
       </Grid>
@@ -112,6 +112,8 @@ const createGridRow = ({ cols, cells, options, className }: IGridRow): JSX.Eleme
  * @param rows - array ( obj( cells, options ) )
  * @param rows.cells - obj (  'name === column label': obj ( content ) )
  * @param rows.options - options - obj( spacing , columnSpacing , rowSpacing , hide: bool )
+ * 
+ * @param className - str
  */
 
 export default ({ cols, rows, options, className }: IGridList): JSX.Element | null => {

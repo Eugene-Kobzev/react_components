@@ -1,0 +1,21 @@
+.products-list{
+
+  .grid-list{
+    &__cell{
+      padding: 0.5em;
+    }
+
+    &__row{
+      border-bottom: 1px solid lightgray;
+
+      &:last-child{
+        border-bottom: none;
+      }
+    }
+  }
+
+  .col-2{
+    color: green;
+    font-weight: 700;
+  }
+}
