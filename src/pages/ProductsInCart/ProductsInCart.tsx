@@ -1,16 +1,20 @@
-import { useMemo } from 'react';
-import { CircularProgress, Link } from '@mui/material';
+import { useMemo, useState } from 'react';
+import { CircularProgress, Button } from '@mui/material';
 import useProducts from 'hooks/useProducts';
 import GridList from 'components/common/GridList/GridList';
+import ProductImgModal from 'components/complex/ProductImgModal/ProductImgModal';
 import { IProduct } from 'models'
 import './style.scss'
 
 interface IButtonArea {
-  image?: string
+  image?: string,
+  alt?: string,
+  // eslint-disable-next-line no-unused-vars
+  openModal(alt?: string, image?: string): void
 }
 
-const ButtonsArea = ({ image }: IButtonArea) => (
-  <Link href={image} target="_blank" rel="noreferrer">Show</Link>
+const ButtonsArea = ({ image, alt, openModal }: IButtonArea) => (
+  <Button variant="text" onClick={() => openModal(alt, image)}>Show</Button>
 )
 
 export default () => {
@@ -56,6 +60,16 @@ export default () => {
     showHeading: true
   }
 
+  const [alt, setalt] = useState('')
+  const [image, setimage] = useState('')
+  const [open, setopen] = useState(false)
+
+  const handleOpenmodal = (alt: string, image: string) => {
+    setalt(alt)
+    setimage(image)
+    setopen(true)
+  }
+
   const rows = useMemo(() => {
     if (loading) return undefined
     return productsList.map((item: IProduct) => {
@@ -65,7 +79,7 @@ export default () => {
           'price': { content: `${item.price}$`, },
           'category': { content: item.category, },
           'rating': { content: item.rating?.rate, },
-          'buttons': { content: <ButtonsArea image={item.image} />, },
+          'buttons': { content: <ButtonsArea image={item.image} alt={item.title} openModal={handleOpenmodal} />, },
         }
       }
     })
@@ -92,8 +106,12 @@ export default () => {
             />
         }
       </div>
+      <ProductImgModal
+        image={image}
+        alt={alt}
+        open={open}
+        openStateHandler={setopen}
+      />
     </div>
   )
 }
-
-//productsList.map(product => <Product product={product} key={Math.random()} />)

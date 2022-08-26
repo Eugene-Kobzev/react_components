@@ -1,0 +1,12 @@
+$max-w: 90vw;
+$max-h: 80vh;
+
+.product-modal{
+  max-width: $max-w;
+  max-height: $max-h;
+
+  &__image{
+    max-width: $max-w;
+    max-height: $max-h;
+  }
+} 
