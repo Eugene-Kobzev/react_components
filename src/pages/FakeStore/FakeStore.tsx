@@ -63,7 +63,6 @@ export default function () {
 
   const handleDisplayModeChange = event => {
     const val = event.target.value
-    console.log({ val })
     setdisplayMode(val)
   }
 
@@ -93,8 +92,6 @@ export default function () {
       </div>
     </header>
   )
-
-  console.log({ productsList })
 
   return (
     <div >
