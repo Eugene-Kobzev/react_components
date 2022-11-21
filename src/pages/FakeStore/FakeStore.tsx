@@ -20,7 +20,7 @@ export default function () {
           flexWrap: 'wrap'
         }}
       >
-        {productsList.map(product => <Product product={product} key={Math.random()} />)}
+        {productsList.map((product: IProduct) => <Product product={product} key={product.id} />)}
       </div>
     )
 
