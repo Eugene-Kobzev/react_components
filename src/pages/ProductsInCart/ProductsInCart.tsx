@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
 import { CircularProgress, Button } from '@mui/material';
 import useProducts from 'hooks/useProducts';
-import GridList from 'components/common/GridList/GridList';
-import ProductImgModal from 'components/complex/ProductImgModal/ProductImgModal';
+import GridList from 'components/common/GridList';
+import ProductImgModal from 'components/complex/ProductImgModal';
 import { IProduct } from 'models'
 import './style.scss'
 

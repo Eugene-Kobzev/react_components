@@ -1,8 +1,8 @@
 import './App.css';
-import Layout from 'components/common/Layout/Layout';
-import FakeStore from 'pages/FakeStore/FakeStore';
-import DnDInput from 'pages/DnDInput/DnDInput';
-import ProductsInCart from 'pages/ProductsInCart/ProductsInCart';
+import Layout from 'components/common/Layout';
+import FakeStore from 'pages/FakeStore';
+import DnDInput from 'pages/DnDInput';
+import ProductsInCart from 'pages/ProductsInCart';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import DragNDropUpload from 'components/common/DragNDropUpload/DragNDropUpload'
+import DragNDropUpload from 'components/common/DragNDropUpload'
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 
 interface IFile {

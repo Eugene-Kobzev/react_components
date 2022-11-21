@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import SidebarContent from './Parts/SidebarContent/SidebarContent'
+import SidebarContent from './Parts/SidebarContent'
 import './style.scss'
 
 interface ILayout {
